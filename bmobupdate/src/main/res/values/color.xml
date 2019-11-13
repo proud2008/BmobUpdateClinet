@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bmob_lineColor">#eaeaea</color>
+    <color name="bmob_blue">#204c9b</color>
+    <color name="bmob_grey">#898989</color>
+    <color name="bmob_black">#2a2a2a</color>
+    <color name="bmob_transParent">#00000000</color>
+
+
+</resources>

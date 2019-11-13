@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.xin.bmobupdateclinet"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                BMOB_CHANNEL    : "${applicationId}",
+                BMOB_KEY        : "${rootProject.ext.bmobAppId}",
+                BMOB_RestFul_KEY: "${rootProject.ext.bmobRestFulId}",
+        ]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+//    implementation 'com.xin:BmobUpdateClient:1.0'
+    implementation project(path: ':bmobupdate')
+}
+
+apply plugin: 'bmobPublishPlugin'
+bmobPublishConfig {
+    release true
+    pygerApiKey = "948e6889fd4a0e7700cf19abfac42590"
+    pygerUserKey = "1"
+//    uploadUrl "http://121.40.36.112:5819/api/bitcoin/api/index" /*中视地址*/
+    uploadUrl "http://47.99.145.127:30003/V2/User/ShopManager/addAppFile"
+    bmobAppId "${rootProject.ext.bmobAppId}"
+    bmobRestFulId "${rootProject.ext.bmobRestFulId}"
+}

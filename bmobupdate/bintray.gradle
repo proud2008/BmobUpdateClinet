@@ -1,0 +1,21 @@
+// https://github.com/novoda/bintray-release
+/*https://bintray.com/proud2008*/
+/*https://bintray.com*/
+
+
+apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = 'proud2008' //bintray注册的用户名
+    repoName = "maven"  //仓库名
+    groupId = 'com.xin'  //compile引用时的第1部分groupId
+    artifactId = 'BmobUpdateClient'  //compile引用时的第2部分项目名
+    publishVersion = "1.1"  //compile引用时的第3部分版本号
+    desc = 'BmobUpdateClient'
+    website = 'https://gitee.com/xinProject/BmobUploadPluginGradle'
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}

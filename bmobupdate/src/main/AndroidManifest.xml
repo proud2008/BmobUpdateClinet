@@ -1,0 +1,32 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xin.bmobupdate" >
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application>
+        <service android:name="com.xin.bmobupdate.BmobUpdateService"></service>
+
+        <meta-data
+            android:name="BMOB_KEY"
+            android:value="${BMOB_KEY}" />
+        <meta-data
+            android:name="BMOB_RestFul_KEY"
+            android:value="${BMOB_RestFul_KEY}" />
+        <meta-data
+            android:name="BMOB_CHANNEL"
+            android:value="${BMOB_CHANNEL}" />
+
+        <activity
+            android:name="com.xin.bmobupdate.BmobUpdateActivity"
+            android:theme="@style/AppDialog"></activity>
+        <provider
+            android:name="com.xin.bmobupdate.UpdateFileProvider"
+            android:authorities="${applicationId}.bmobupdate.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/bmob_file_paths" />
+        </provider>
+    </application>
+</manifest>
